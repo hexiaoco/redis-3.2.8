@@ -1,0 +1,43 @@
+Redis 教程: http://www.runoob.com/redis/redis-data-types.html
+2017-03-01 Wed 17:27
+
+
+Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合)。
+
+
+string类型是二进制安全的。意思是redis的string可以包含任何数据。比如jpg图片或者序列化的对象 。
+string类型是Redis最基本的数据类型，一个键最大能存储512MB。
+
+
+Hash（哈希）Demo:
+HMSET user:1 username runoob password runoob points 200
+HGETALL user:1
+
+
+List（列表）Demo:
+lpush runoob redis
+lpush runoob mongodb
+lpush runoob rabitmq
+lrange runoob 0 10
+
+
+Set（集合）Demo:
+sadd runoob redis
+sadd runoob mongodb
+sadd runoob rabitmq
+sadd runoob rabitmq
+smembers runoob
+
+
+zset(sorted set：有序集合)
+Redis zset 和 set 一样也是string类型元素的集合,且不允许重复的成员。
+不同的是每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。
+zset的成员是唯一的,但分数(score)却可以重复。
+Demo:
+zadd runoob 0 redis
+zadd runoob 0 mongodb
+zadd runoob 0 rabitmq
+zadd runoob 0 rabitmq
+ZRANGEBYSCORE runoob 0 1000
+
+
